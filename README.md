@@ -8,9 +8,8 @@
 Official implementation of **DCT-PT**, a lightweight frequency-aware Parameter-Efficient Fine-Tuning (PEFT) framework for few-shot Human Activity Recognition (HAR) based on the self-supervised pre-trained Time Series Foundation Model (TSFM) **MOMENT**.
 
 > **DCT-PT: Frequency-Aware Prompt Tuning for Few-Shot Human Activity Recognition**  
-> Xiaohui Ye, Lei Zhang, Guangjie Chen, Chaoda Song, Shuoyuan Wang, Hao Wu, Aiguo Song  
+> Xiaohui Ye, Lei Zhang, Qifan Sun, Chaoda Song, Kun Wang, Hao Wu, Aiguo Song  
 > *School of Electrical and Automation Engineering, Nanjing Normal University, China*  
-> Paper: [arXiv / IEEE Link (TBD)]
 
 ---
 
