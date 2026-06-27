@@ -15,8 +15,6 @@ Official implementation of **DCT-PT**, a lightweight frequency-aware Parameter-E
 
 ## Overview
 
-![DCT-PT Framework](docs/model.pdf)
-
 Adapting large-scale pre-trained TSFMs to downstream HAR tasks faces two fundamental challenges: (1) **data scarcity** — labeled sensor data is expensive to annotate, and (2) **representation heterogeneity** — sensor signals exhibit high variability across devices, body positions, and subjects due to distribution shifts.
 
 **DCT-PT** addresses these challenges through a three-component lightweight PEFT framework:
