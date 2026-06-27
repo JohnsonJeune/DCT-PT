@@ -84,23 +84,6 @@ The overall framework of DCT-PT:
 **(b) Multi-scale Frequency-aware residual Module (MFM)** uses depthwise separable convolutions with different kernel sizes ($5 \times 5$ for low-frequency, $3 \times 3$ for high-frequency) to decompose features, with cross-frequency gating for bidirectional information modulation.
 
 **(c) Channel-wise Shift Module (CWS)** applies learnable per-channel shifts with ℓ₂ normalization to align feature distributions, mitigating domain drift between pre-training and downstream tasks.
-
-### Core Formulation
-
-**DCT Basis:**
-$$C_{k,n} = \begin{cases} \sqrt{\frac{1}{T}}, & k = 0 \\ \sqrt{\frac{2}{T}} \cos\left(\frac{\pi(2n+1)k}{2T}\right), & k > 0 \end{cases}$$
-
-**Frequency-aware Prompt:**
-$$\mathbf{P} = \sum_{k=1}^{K} \mathbf{S}_k \odot \mathbf{F}_k$$
-
-where $\mathbf{S}$ are frequency importance weights from Softmax-gated LoRA.
-
-**Cross-frequency Interaction:**
-$$\hat{F}_L = F_L \odot \sigma(\mathcal{G}_{H \rightarrow L}(F_H)), \quad \hat{F}_H = F_H \odot \sigma(\mathcal{G}_{L \rightarrow H}(F_L))$$
-
-**Channel-wise Shift:**
-$$Z'_{c} = \frac{Z_{c} + s_{c}}{\|Z_{c} + s_{c}\|_2}$$
-
 ---
 
 ## Installation
@@ -160,60 +143,7 @@ python train.py --dataset HHAR --shots full --backbone MOMENT
 python evaluate.py --dataset PAMAP2 --shots 5 --checkpoint ./checkpoints/best_model.pth
 ```
 
-### Hyperparameters
-
-| Parameter | Value |
-|-----------|-------|
-| LoRA rank $r$ | 8 |
-| DCT frequency bands | 25 |
-| Sequence length $T$ | 500 |
-| Epochs | 200 |
-| Optimizer | Adam (weight decay $5 \times 10^{-4}$) |
-| Learning rate | $\{10^{-2}, 10^{-3}\}$ |
-| Temperature $\tau$ | 0.07 |
-| Batch size | 8 |
-
 ---
-
-## Project Structure
-
-```
-DCT-PT/
-├── README.md              # This file
-├── requirements.txt       # Dependencies
-├── train.py               # Training script
-├── evaluate.py            # Evaluation script
-├── config.py              # Configuration
-├── models/
-│   ├── ads.py             # Adaptive DCT-based Sampling
-│   ├── mfm.py             # Multi-scale Frequency-aware Module
-│   └── cws.py             # Channel-wise Shift Module
-├── datasets/
-│   ├── hhar.py            # HHAR dataset loader
-│   ├── motionsense.py     # MotionSense dataset loader
-│   └── pamap2.py          # PAMAP2 dataset loader
-├── utils/
-│   └── metrics.py         # Evaluation metrics
-├── docs/
-│   ├── model.pdf          # Architecture diagram
-│   └── figures/           # Result figures
-└── checkpoints/           # Saved model weights
-```
-
----
-
-## Citation
-
-If you find this work useful for your research, please cite:
-
-```bibtex
-@article{ye2025dctpt,
-  title={DCT-PT: Frequency-Aware Prompt Tuning for Few-Shot Human Activity Recognition},
-  author={Ye, Xiaohui and Zhang, Lei and Chen, Guangjie and Song, Chaoda and Wang, Shuoyuan and Wu, Hao and Song, Aiguo},
-  journal={IEEE Transactions on ...},
-  year={2026}
-}
-```
 
 ## License
 
