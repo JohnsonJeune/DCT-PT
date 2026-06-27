@@ -69,11 +69,7 @@ Adapting large-scale pre-trained TSFMs to downstream HAR tasks faces two fundame
 
 ---
 
-## Method
-
 ### Architecture
-
-![DCT-PT Architecture](docs/model.pdf)
 
 The overall framework of DCT-PT:
 
@@ -82,6 +78,7 @@ The overall framework of DCT-PT:
 **(b) Multi-scale Frequency-aware residual Module (MFM)** uses depthwise separable convolutions with different kernel sizes ($5 \times 5$ for low-frequency, $3 \times 3$ for high-frequency) to decompose features, with cross-frequency gating for bidirectional information modulation.
 
 **(c) Channel-wise Shift Module (CWS)** applies learnable per-channel shifts with ℓ₂ normalization to align feature distributions, mitigating domain drift between pre-training and downstream tasks.
+  
 ---
 
 ## Installation
